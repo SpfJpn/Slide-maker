@@ -19,9 +19,8 @@ slide_count = st.sidebar.slider("スライドの枚数", min_value=3, max_value=
 
 # --- 3. AIに原稿を書かせる命令（関数） ---
 def generate_script(theme, count):
-    # ご確認いただいた通り、最新主流の Gemini 3 Flash に変更しました！
-    # （もしエラーが出る場合は 'gemini-3-flash-preview' に変更してください）
-    model = genai.GenerativeModel('gemini-3-flash')
+    # 見事に見つけ出していただいた、正確なAPIの型番を指定します！
+    model = genai.GenerativeModel('gemini-3-flash-preview')
     
     prompt = f"""
     あなたはプロのスライド制作者です。
