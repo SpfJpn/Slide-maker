@@ -19,8 +19,8 @@ slide_count = st.sidebar.slider("スライドの枚数", min_value=3, max_value=
 
 # --- 3. AIに原稿を書かせる命令（関数） ---
 def generate_script(theme, count):
-    # 無料で高速な Flash モデルを使用します
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    # エラーを回避するため、最も安定して動作する標準モデルに変更しました
+    model = genai.GenerativeModel('gemini-pro')
     
     prompt = f"""
     あなたはプロのスライド制作者です。
@@ -55,6 +55,6 @@ if st.button("AIに原稿を作らせる"):
             st.session_state["script"] = script
             
         except Exception as e:
-            st.error(f"AIの呼び出しに失敗しました。APIキーが正しいか確認してください。 エラー内容: {e}")
+            st.error(f"AIの呼び出しに失敗しました。エラー内容: {e}")
 
 st.info("原稿ができたら、次はこれに『音声』と『画像』を自動でつけていきます。")
